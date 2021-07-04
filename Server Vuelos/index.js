@@ -25,7 +25,8 @@ sslServer = https.createServer({
     cert: fs.readFileSync(path.join(__dirname, 'Cert', 'cert.pem'))
 }, app)
 
-var server = sslServer.listen(PORT, HOST, listenting);
+//var server = sslServer.listen(PORT, HOST, listenting);
+var server = app.listen(PORT, HOST, listenting);
 
 function listenting() {
     console.log("Server is running on Port:" + PORT);

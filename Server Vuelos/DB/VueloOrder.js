@@ -4,6 +4,9 @@ const vueloOrder = new mongoose.Schema({
     _id: {
         type: String
     },
+    agencia_id: {
+        type: String
+    },
     vuelo_id: {
         type: String
     },

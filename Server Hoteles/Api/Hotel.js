@@ -4,8 +4,9 @@ const Hotel = require("../DB/Hotel");
 const route = express.Router();
 
 route.post("/postHotel", async(req, res) => {
-    let { nombre, ciudad, tipo_habitacion, capacidad_personas, camas, precio_dia, disponible, stock } = req.body;
+    let { server_id, nombre, ciudad, tipo_habitacion, capacidad_personas, camas, precio_dia, disponible, stock } = req.body;
     let hotel = {};
+    hotel.server_id = server_id;
     hotel.nombre = nombre;
     hotel.ciudad = ciudad;
     hotel.precio_dia = precio_dia;
@@ -64,9 +65,10 @@ route.delete("/deleteById/:Id", async(req, res) => {
     });
 })
 
-route.put("/modificaHotel/:Id/:nombre/:ciudad/:precio_dia/:plazas/:disponible/:tipo_habitacion/:capacidad_personas/:camas/:stock",
+route.put("/modificaHotel/:Id/:server_id/:nombre/:ciudad/:precio_dia/:plazas/:disponible/:tipo_habitacion/:capacidad_personas/:camas/:stock",
     async(req, res) => {
         await Hotel.updateOne({ _id: `${req.params.Id}` }, {
+            server_id: `${req.params.server_id}`,
             nombre: `${req.params.nombre}`,
             ciudad: `${req.params.ciudad}`,
             precio_dia: `${req.params.precio_dia}`,

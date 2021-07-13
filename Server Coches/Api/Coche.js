@@ -4,8 +4,9 @@ const Coche = require("../DB/Coche");
 const route = express.Router();
 
 route.post("/postCoche", async(req, res) => {
-    let { marca, modelo, plazas, disponible, precio, stock } = req.body;
+    let { server_id, marca, modelo, plazas, disponible, precio, stock } = req.body;
     let coche = {};
+    coche.server_id = server_id;
     coche.marca = marca;
     coche.modelo = modelo;
     coche.precio = precio;
@@ -62,8 +63,9 @@ route.delete("/deleteById/:Id", async(req, res) => {
     });
 })
 
-route.put("/modificaCoche/:Id/:marca/:modelo/:precio/:plazas/:disponible/:stock", async(req, res) => {
+route.put("/modificaCoche/:Id/:server_id/:marca/:modelo/:precio/:plazas/:disponible/:stock", async(req, res) => {
     await Coche.updateOne({ _id: `${req.params.Id}` }, {
+        server_id: `${req.params.server_id}`,
         marca: `${req.params.marca}`,
         modelo: `${req.params.modelo}`,
         precio: `${req.params.precio}`,

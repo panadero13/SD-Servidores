@@ -4,9 +4,10 @@ const HotelOrder = require("../DB/HotelOrder");
 const route = express.Router();
 
 route.post("/postHotelOrder", async(req, res) => {
-    let { _id, hotel_id, usuario_email, precio, fecha_orden, dias_contratados } = req.body;
+    let { _id, agencia_id, hotel_id, usuario_email, precio, fecha_orden, dias_contratados } = req.body;
     let hotelOrder = {};
     hotelOrder._id = _id;
+    hotelOrder.agencia_id = agencia_id;
     hotelOrder.hotel_id = hotel_id;
     hotelOrder.usuario_email = usuario_email;
     hotelOrder.precio = precio;
@@ -49,8 +50,10 @@ route.delete("/deleteById/:Id", async(req, res) => {
     });
 })
 
-route.put("/modificaHotel/:usuario_email/:precio/:fecha_orden/:dias_contratados", async(req, res) => {
+route.put("/modificaHotel/:agencia_id/:hotel_id/:usuario_email/:precio/:fecha_orden/:dias_contratados", async(req, res) => {
     await HotelOrder.updateOne({ _id: `${req.params.Id}` }, {
+        agencia_id: `${req.params.agencia_id}`,
+        hotel_id: `${req.params.hotel_id}`,
         usuario_email: `${req.params.usuario_email}`,
         precio: `${req.params.precio}`,
         fecha_orden: `${req.params.fecha_orden}`,

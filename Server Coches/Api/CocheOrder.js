@@ -4,9 +4,10 @@ const CocheOrder = require("../DB/CocheOrder");
 const route = express.Router();
 
 route.post("/postCocheOrder", async(req, res) => {
-    let { _id, coche_id, usuario_email, precio, fecha_orden, dias_contratados } = req.body;
+    let { _id, agencia_id, coche_id, usuario_email, precio, fecha_orden, dias_contratados } = req.body;
     let cocheOrder = {};
     cocheOrder._id = _id;
+    cocheOrder.agencia_id = agencia_id;
     cocheOrder.coche_id = coche_id;
     cocheOrder.usuario_email = usuario_email;
     cocheOrder.precio = precio;
@@ -49,9 +50,10 @@ route.delete("/deleteById/:Id", async(req, res) => {
     });
 })
 
-route.put("/modificaCocheOrder/:Id/:coche_id/:usuario_email/:precio/:fecha_orden/:dias_contratados", async(req, res) => {
+route.put("/modificaCocheOrder/:Id/:agencia_id/:coche_id/:usuario_email/:precio/:fecha_orden/:dias_contratados", async(req, res) => {
     await CocheOrder.updateOne({ _id: `${req.params.Id}` }, {
         coche_id: `${req.params.coche_id}`,
+        agencia_id: `${req.params.agencia_id}`,
         usuario_email: `${req.params.usuario_email}`,
         precio: `${req.params.precio}`,
         fecha_orden: `${req.params.plazas}`,

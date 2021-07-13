@@ -4,8 +4,9 @@ const Vuelo = require("../DB/Vuelo");
 const route = express.Router();
 
 route.post("/postVuelo", async(req, res) => {
-    let { origen, destino, precio, hora, fecha, disponible, stock } = req.body;
+    let { server_id, origen, destino, precio, hora, fecha, disponible, stock } = req.body;
     let vuelo = {};
+    vuelo.server_id = server_id;
     vuelo.origen = origen;
     vuelo.destino = destino;
     vuelo.precio = precio;
@@ -63,8 +64,9 @@ route.delete("/deleteById/:Id", async(req, res) => {
     });
 })
 
-route.put("/modificaVuelo/:Id/:origen/:destino/:precio/:hora/:fecha/:disponible/:stock", async(req, res) => {
+route.put("/modificaVuelo/:Id/:server_id/:origen/:destino/:precio/:hora/:fecha/:disponible/:stock", async(req, res) => {
     await Vuelo.updateOne({ _id: `${req.params.Id}` }, {
+        server_id: `${req.params.server_id}`,
         origen: `${req.params.origen}`,
         destino: `${req.params.destino}`,
         precio: `${req.params.precio}`,

@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const coche = new mongoose.Schema({
+    server_id: {
+        type: String
+    },
     marca: {
         type: String
     },

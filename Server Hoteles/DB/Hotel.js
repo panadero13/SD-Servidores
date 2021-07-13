@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const hotel = new mongoose.Schema({
+    server_id: {
+        type: String
+    },
     nombre: {
         type: String
     },

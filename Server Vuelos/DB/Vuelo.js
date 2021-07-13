@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const vuelo = new mongoose.Schema({
+    server_id: {
+        type: String
+    },
     origen: {
         type: String
     },

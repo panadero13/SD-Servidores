@@ -4,6 +4,9 @@ const hotelOrder = new mongoose.Schema({
     _id: {
         type: String
     },
+    agencia_id: {
+        type: String
+    },
     hotel_id: {
         type: String
     },

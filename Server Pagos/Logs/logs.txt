@@ -1,0 +1,6 @@
+11/7/2021 13:9:44: Nueva transaccion del usuario: Luis Miguel Panadero con email test@test.es con coste 145.20.
+  El usuario tenia 1000 y acabó con 854.8 
+11/7/2021 13:13:29: Nueva transaccion del usuario: Luis Miguel Panadero con email test@test.es con coste 145.20.
+  El usuario tenia 854.8 y acabó con 709.5999999999999 
+ERROR: La transacción del usuario Luis Miguel Panadero con email test@test.es con coste 145.20 fue cancelada.
+  El usuario tenia 709.5999999999999 y acabó con 854.8 
